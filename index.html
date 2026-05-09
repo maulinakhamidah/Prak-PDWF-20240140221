@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulir Winnie The Pooh</title>
+
+  <style>
+
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body{
+      font-family: Georgia, 'Times New Roman', Times, serif;
+
+      background-image: url('pohh.jpg');
+
+      background-size: cover;
+
+      background-repeat: no-repeat;
+
+      background-position: center;
+
+      min-height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      color: #5d4037;
+    }
+
+    nav{
+      width: 100%;
+      padding: 18px;
+      background: rgba(255,255,255,0.5);
+      text-align: center;
+      backdrop-filter: blur(5px);
+    }
+
+    nav a{
+      text-decoration: none;
+      margin: 0 15px;
+      color: #6d4c41;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover{
+      color: #d97706;
+    }
+
+    h1{
+      margin-top: 40px;
+      font-size: 40px;
+      color: #7c2d12;
+      text-shadow: 2px 2px 5px rgba(255,255,255,0.7);
+    }
+
+    .subtitle{
+      margin-top: 10px;
+      margin-bottom: 30px;
+      font-weight: bold;
+      color: #5d4037;
+    }
+
+    .card,
+    .hasil{
+      width: 90%;
+      max-width: 550px;
+
+      padding: 30px;
+
+      border-radius: 20px;
+
+      background: rgba(255,255,255,0.65);
+
+      backdrop-filter: blur(8px);
+
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .card{
+      margin-bottom: 25px;
+    }
+
+    label{
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #5d4037;
+    }
+
+    input,
+    select{
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      background: rgba(255,255,255,0.9);
+      color: black;
+    }
+
+    input::placeholder{
+      color: #666;
+    }
+
+    input:focus,
+    select:focus{
+      box-shadow: 0 0 10px rgba(255,193,7,0.8);
+    }
+
+    option{
+      color: black;
+    }
+
+    button{
+      width: 100%;
+      margin-top: 25px;
+      padding: 13px;
+
+      border: none;
+      border-radius: 12px;
+
+      background: linear-gradient(135deg, #facc15, #f59e0b);
+
+      color: #5d4037;
+
+      font-size: 16px;
+      font-weight: bold;
+
+      cursor: pointer;
+
+      transition: 0.3s;
+    }
+
+    button:hover{
+      transform: scale(1.02);
+    }
+
+    .hasil{
+      display: none;
+      margin-bottom: 40px;
+    }
+
+    .hasil h2{
+      margin-bottom: 20px;
+      color: #92400e;
+    }
+
+    .row{
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      color: #4e342e;
+    }
+
+    .row:last-child{
+      border-bottom: none;
+    }
+
+    .label{
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Biodata</a>
+    <a href="#">Tentang</a>
+    <a href="#">Hobi</a>
+  </nav>
+
+  <h1>Formulir Data Diri</h1>
+
+  <p class="subtitle">
+  </p>
+
+  <div class="card">
+
+    <label>Nama Lengkap</label>
+    <input type="text" id="nama" placeholder="Masukkan nama lengkap">
+
+    <label>Tanggal Lahir</label>
+    <input type="date" id="tanggal">
+
+    <label>Asal Daerah</label>
+    <input type="text" id="daerah" placeholder="Masukkan asal daerah">
+
+    <label>Alamat</label>
+    <input type="text" id="alamat" placeholder="Masukkan alamat">
+
+    <label>Jurusan</label>
+
+    <select id="jurusan">
+      <option value="">-- Pilih Jurusan --</option>
+      <option>Teknologi Informasi</option>
+      <option>Teknik Mesin</option>
+      <option>Teknik Elektro</option>
+      <option>Teknik Sipil</option>
+      <option>Teknologi Elektro Medis</option>
+    </select>
+
+    <label>Hobi</label>
+
+    <select id="hobi">
+      <option value="">-- Pilih Hobi --</option>
+      <option>Membaca</option>
+      <option>Gaming</option>
+      <option>Musik</option>
+      <option>Olahraga</option>
+      <option>Traveling</option>
+    </select>
+
+    <button onclick="tampilkanData()">
+      Tampilkan Data
+    </button>
+
+  </div>
+
+  <div class="hasil" id="hasil">
+
+    <h2>Hasil Data</h2>
+
+    <div class="row">
+      <span class="label">Nama :</span>
+      <span id="outNama"></span>
+    </div>
+
+    <div class="row">
+      <span class="label">Tanggal Lahir :</span>
+      <span id="outTanggal"></span>
+    </div>
+
+    <div class="row">
+      <span class="label">Usia :</span>
+      <span id="outUsia"></span>
+    </div>
+
+    <div class="row">
+      <span class="label">Asal Daerah :</span>
+      <span id="outDaerah"></span>
+    </div>
+
+    <div class="row">
+      <span class="label">Alamat :</span>
+      <span id="outAlamat"></span>
+    </div>
+
+    <div class="row">
+      <span class="label">Jurusan :</span>
+      <span id="outJurusan"></span>
+    </div>
+
+    <div class="row">
+      <span class="label">Hobi :</span>
+      <span id="outHobi"></span>
+    </div>
+
+  </div>
+
+  <script>
+
+    function tampilkanData(){
+
+      let nama = document.getElementById("nama").value;
+      let tanggal = document.getElementById("tanggal").value;
+      let daerah = document.getElementById("daerah").value;
+      let alamat = document.getElementById("alamat").value;
+      let jurusan = document.getElementById("jurusan").value;
+      let hobi = document.getElementById("hobi").value;
+
+      if(
+        nama === "" ||
+        tanggal === "" ||
+        daerah === "" ||
+        alamat === "" ||
+        jurusan === "" ||
+        hobi === ""
+      ){
+        alert("Isi semua data terlebih dahulu!");
+        return;
+      }
+
+      let lahir = new Date(tanggal);
+
+      let sekarang = new Date();
+
+      let usia = sekarang.getFullYear() - lahir.getFullYear();
+
+      let bulan = sekarang.getMonth() - lahir.getMonth();
+
+      if(
+        bulan < 0 ||
+        (bulan === 0 && sekarang.getDate() < lahir.getDate())
+      ){
+        usia--;
+      }
+
+      let tanggalIndonesia = lahir.toLocaleDateString("id-ID", {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+      });
+
+      document.getElementById("outNama").innerHTML = nama;
+      document.getElementById("outTanggal").innerHTML = tanggalIndonesia;
+      document.getElementById("outUsia").innerHTML = usia + " tahun";
+      document.getElementById("outDaerah").innerHTML = daerah;
+      document.getElementById("outAlamat").innerHTML = alamat;
+      document.getElementById("outJurusan").innerHTML = jurusan;
+      document.getElementById("outHobi").innerHTML = hobi;
+
+      document.getElementById("hasil").style.display = "block";
+    }
+
+  </script>
+
+</body>
+</html>
